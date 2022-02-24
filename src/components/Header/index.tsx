@@ -8,9 +8,9 @@ function Header() {
   return (
     <StyledHeader>
       <div className="icons">
-      <a href=""><img src={linkedin} alt="Linkedin" /></a>
-      <a href=""><img src={facebook} alt="Facebook" /></a>
-      <a href=""><img src={discord} alt="Discord" /></a>
+        <a href=""><img src={linkedin} alt="Linkedin" /></a>
+        <a href=""><img src={facebook} alt="Facebook" /></a>
+        <a href=""><img src={discord} alt="Discord" /></a>
       </div>
       <div className="logo">
         <div className="logo-icon">

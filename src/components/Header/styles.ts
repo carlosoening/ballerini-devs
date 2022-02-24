@@ -3,11 +3,10 @@ import styled from "styled-components";
 export const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
-  padding: 60px 16px;
-  max-width: 1200px;
-  position: relative;
+  padding: 60px 0px;
   margin: auto;
   align-items: center;
+  margin-left: 100px;
 
   .icons {
     display: flex;
@@ -40,6 +39,7 @@ export const StyledHeader = styled.header`
 
   @media screen and (max-width: 768px) {
     flex-direction: column-reverse;
+    margin: auto;
 
     .logo {
       position: static;
