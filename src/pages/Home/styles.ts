@@ -11,13 +11,11 @@ export const HomeContainer = styled.main`
     position: absolute;
     left: 0;
     bottom: 0;
+    z-index: -1;
   }
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    .blobs-image {
-      z-index: -1;
-    }
   }
 `;
 
@@ -30,16 +28,20 @@ export const HomeContentContainer = styled.div`
     max-width: 560px;
     align-self: center;
 
-  .home-content-title {
-    font-weight: bold;
-    font-style: normal;
-    font-size: 48px;
-    color: ${colors.title}
-  }
+  .home-content-text {
+    margin-bottom: 80px;
 
-  .home-content-subtitle {
-    font-size: 24px;
-    color: ${colors.gray}
+    .home-content-title {
+      font-weight: bold;
+      font-style: normal;
+      font-size: 48px;
+      color: ${colors.title}
+    }
+
+    .home-content-subtitle {
+      font-size: 24px;
+      color: ${colors.gray}
+    }
   }
 
   @media screen and (max-width: 768px) {
