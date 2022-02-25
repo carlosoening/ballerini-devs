@@ -1,6 +1,11 @@
+import Card from "../../components/Card";
+import { StyledDevs } from "./styles";
+
 function Devs() {
   return (
-    <div>DEVS</div>
+    <StyledDevs>
+      <Card></Card>
+    </StyledDevs>
   );
 }
 
