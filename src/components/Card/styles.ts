@@ -4,6 +4,7 @@ import colors from "../../styles/colors";
 export const CardContainer = styled.div`
   display: flex;
   margin: 20px;
+  flex-direction: column;
 `;
 
 export const StyledCard = styled.div`
@@ -60,4 +61,11 @@ export const LinksContainer = styled.div`
   display: flex;
   margin-top: 40px;
   gap: 20px;
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  margin-top: 50px;
 `;
