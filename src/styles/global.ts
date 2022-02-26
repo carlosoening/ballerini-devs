@@ -15,9 +15,5 @@ export default createGlobalStyle`
     font-size: 14px;
     color: ${colors.text};
     font-family: 'Maven Pro', sans-serif;
-
-    #root {
-      min-height:100vh;
-    }
   }
 `;

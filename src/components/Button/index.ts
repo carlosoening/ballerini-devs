@@ -2,7 +2,7 @@ import styled from "styled-components";
 import colors from "../../styles/colors";
 
 interface Props {
-  backgroundColor: string;
+  backgroundColor?: string;
   width?: string;
   height?: string;
   fontSize?: string;
