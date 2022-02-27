@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Card from "../../components/Card";
 import Dev from "../../interfaces/dev";
-import { CardsDisplay, OptionsContainer, SearchInput, SearchInputContainer, StyledDevs } from "./styles";
+import { CardsDisplay, OptionsContainer, SearchInputContainer, StyledDevs } from "./styles";
 import searchIcon from '../../assets/search-icon.svg';
 import { Button } from "../../components/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,6 +10,7 @@ import SwiperCore, { Navigation } from 'swiper';
 import 'swiper/css';
 import "swiper/css/navigation";
 import Modal from "../../components/Modal";
+import { Input } from "../../components/Input";
 
 function Devs() {
 
@@ -77,13 +78,18 @@ function Devs() {
     setDevs(devs.filter(d => d.name.toLowerCase().includes(value.toLowerCase())));
   }
 
+  function handleAddItem(event: any) {
+    console.log(event);
+    setDevs([...devs, event]);
+  }
+
   return (
     <StyledDevs>
-      <Modal showModal={showModal} setShowModal={setShowModal} />
+      <Modal showModal={showModal} setShowModal={setShowModal} onAddItem={handleAddItem} />
       <OptionsContainer>
         <SearchInputContainer>
           <img src={searchIcon} alt="Search Icon" />
-          <SearchInput placeholder="Buscar" onChange={handleSearchInputChange}></SearchInput>
+          <Input placeholder="Buscar" onChange={handleSearchInputChange}></Input>
         </SearchInputContainer>
         <Button width="200px" height="40px" fontSize="14px" onClick={openModal}>Adicionar Desenvolvedor</Button>
       </OptionsContainer>

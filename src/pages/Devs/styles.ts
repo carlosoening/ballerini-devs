@@ -56,6 +56,7 @@ export const OptionsContainer = styled.div`
   gap: 20px;
   top: 50px;
   right: 80px;
+  z-index: 10;
 
   @media screen and (max-width: 1050px) {
     position: absolute;
@@ -79,22 +80,4 @@ export const SearchInputContainer = styled.div`
   overflow: hidden;
   background-color: ${colors.white};
   padding: 0 10px;
-`;
-
-export const SearchInput = styled.input`
-  width: 275px;
-  height: 45px;
-  border: none;
-  font-size: 20px;
-  font-weight: 600;
-  color: #999999;
-  font-family: Overpass;
-  padding: 0 8px;
-  &::placeholder {
-    opacity: 0.5;
-  }
-
-  &:focus {
-    outline: none;
-  }
 `;
