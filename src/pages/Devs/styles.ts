@@ -6,13 +6,47 @@ export const StyledDevs = styled.main`
   justify-content: center;
   align-items: center;
   height: calc(100vh - 146px);
-  flex-wrap: wrap;
-
-  @media screen and (max-width: 696px) {
-    margin-top: 80px;
-  }
-
 `;
+
+export const CardsDisplay = styled.div`
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+      min-width: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+    .swiper-wrapper {
+      height: 500px;
+    }
+    .swiper-slide {
+      width: 100%;
+      max-width: 400px;
+      height: 500px;
+    }
+    .swiper-button-prev, .swiper-button-next {
+      width: 48px;
+      height: 48px;
+      color: #F9F9F980;
+      border-radius: 50%;
+      border: 3px solid #F9F9F980;
+      &:after{
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+    }
+`
 
 export const OptionsContainer = styled.div`
   display: flex;

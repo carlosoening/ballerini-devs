@@ -3,8 +3,8 @@ import colors from "../../styles/colors";
 
 export const CardContainer = styled.div`
   display: flex;
-  margin: 20px;
   flex-direction: column;
+  width: fit-content;
 `;
 
 export const StyledCard = styled.div`
