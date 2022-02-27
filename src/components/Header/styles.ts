@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../../styles/colors";
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -24,6 +25,10 @@ export const StyledHeader = styled.header`
     transform: translateX(-50%);
     cursor: pointer;
     text-decoration: none;
+    
+    &:visited {
+      color: unset;
+    }
 
     .logo-icon {
       img {

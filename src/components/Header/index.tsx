@@ -3,6 +3,7 @@ import favicon from '../../assets/favicon.svg';
 import linkedin from '../../assets/linkedin.svg';
 import facebook from '../../assets/facebook.svg';
 import discord from '../../assets/discord.svg';
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -12,12 +13,12 @@ function Header() {
         <a href=""><img src={facebook} alt="Facebook" /></a>
         <a href=""><img src={discord} alt="Discord" /></a>
       </div>
-      <div className="logo">
+      <Link className="logo" to="/">
         <div className="logo-icon">
           <img src={favicon} alt="Ballerini Devs" />
         </div>
         <div className="logo-text">Ballerini Devs</div>
-      </div>
+      </Link>
     </StyledHeader>
   )
 }

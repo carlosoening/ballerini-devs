@@ -32,7 +32,7 @@ function Devs() {
   function handleSearchInputChange(event: any) {
     let value = event.target.value;
     console.log(value);
-    // setDevs(devs.filter(d => d.name.toLowerCase().includes(value.toLowerCase())));
+    setDevs(devs.filter(d => d.name.toLowerCase().includes(value.toLowerCase())));
   }
 
   return (
