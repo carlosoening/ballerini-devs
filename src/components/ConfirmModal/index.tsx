@@ -35,7 +35,7 @@ export default function ConfirmModal({ showModal, setShowModal, title, text, onO
   useEffect(() => {
     document.addEventListener('keydown', keyPress);
     return () => document.removeEventListener('keydown', keyPress);
-  }, [keyPress])
+  }, [keyPress]);
 
   function ok() {
     onOk({ id: itemId });

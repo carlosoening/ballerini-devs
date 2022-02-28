@@ -61,6 +61,12 @@ export const LinksContainer = styled.div`
   display: flex;
   margin-top: 40px;
   gap: 20px;
+
+  img {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `;
 
 export const ButtonsContainer = styled.div`

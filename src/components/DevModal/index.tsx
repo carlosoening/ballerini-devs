@@ -20,23 +20,22 @@ export default function DevModal({ showModal, setShowModal, onAddItem, editItem,
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
   const [role, setRole] = useState("");
-  const [github, setGithub] = useState("");
-  const [linkedin, setLinkedin] = useState("");
+  const [githubUser, setGithubUser] = useState("");
+  const [linkedinUser, setLinkedinUser] = useState("");
 
   useEffect(() => {
     if (modalType === ModalTypeEnum.EDIT && showModal) {
       setName(editItem.name);
       setAvatar(editItem.avatar);
       setRole(editItem.role);
-      setGithub(editItem.githubUser);
-      setLinkedin(editItem.linkedinUser || '');
-      console.log(editItem)
+      setGithubUser(editItem.githubUser);
+      setLinkedinUser(editItem.linkedinUser || '');
     } else if (!showModal) {
       setName('');
       setAvatar('');
       setRole('');
-      setGithub('');
-      setLinkedin('');
+      setGithubUser('');
+      setLinkedinUser('');
     }
   }, [showModal]);
 
@@ -62,7 +61,7 @@ export default function DevModal({ showModal, setShowModal, onAddItem, editItem,
   }, [keyPress])
 
   function addItem() {
-    onAddItem({name, avatar, role, github, linkedin});
+    onAddItem({name, avatar, role, githubUser, linkedinUser});
     setShowModal(false);
   }
 
@@ -70,8 +69,8 @@ export default function DevModal({ showModal, setShowModal, onAddItem, editItem,
     editItem.name = name;
     editItem.avatar = avatar;
     editItem.role = role;
-    editItem.githubUser = github;
-    editItem.linkedinUser = linkedin;
+    editItem.githubUser = githubUser;
+    editItem.linkedinUser = linkedinUser;
     setShowModal(false);
     return;
   }
@@ -99,11 +98,11 @@ export default function DevModal({ showModal, setShowModal, onAddItem, editItem,
                     value={role}
                     onChange={(e) => setRole(e.target.value)}/>
                   <Input width="100%" height="38px" fontSize="18px" placeholder="Github"
-                    value={github}
-                    onChange={(e) => setGithub(e.target.value)}/>
+                    value={githubUser}
+                    onChange={(e) => setGithubUser(e.target.value)}/>
                   <Input width="100%" height="38px" fontSize="18px" placeholder="Linkedin"
-                    value={linkedin}
-                    onChange={(e) => setLinkedin(e.target.value)}/>
+                    value={linkedinUser}
+                    onChange={(e) => setLinkedinUser(e.target.value)}/>
                   <div className="buttons">
                     <Button width="125px" height="40px" backgroundColor={colors.white} 
                       color="#000" fontSize="20px" onClick={() => setShowModal((prev: any) => !prev)}>

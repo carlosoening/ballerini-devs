@@ -1,18 +1,18 @@
 import { useState } from "react";
-import Card from "../../components/Card";
-import Dev from "../../interfaces/dev";
-import { CardsDisplay, OptionsContainer, SearchInputContainer, StyledDevs } from "./styles";
-import searchIcon from '../../assets/search-icon.svg';
-import { Button } from "../../components/Button";
-import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from 'swiper';
-
 import 'swiper/css';
 import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from "swiper/react";
+import searchIcon from '../../assets/search-icon.svg';
+import { Button } from "../../components/Button";
+import Card from "../../components/Card";
+import ConfirmModal from "../../components/ConfirmModal";
 import DevModal from "../../components/DevModal";
 import { Input } from "../../components/Input";
 import { ModalTypeEnum } from "../../enums/modal-type.enum";
-import ConfirmModal from "../../components/ConfirmModal";
+import Dev from "../../interfaces/dev";
+import { CardsDisplay, OptionsContainer, SearchInputContainer, StyledDevs } from "./styles";
+
 
 function Devs() {
 
@@ -47,44 +47,16 @@ function Devs() {
     {
       name: 'Ricardo Passos',
       role: 'Fullstack Developer',
-      githubUser: 'carlosoening2',
+      githubUser: 'ricardopassos',
       avatar: '',
-      linkedinUser: 'carlosoening'
-    },
-    {
-      name: 'Teste',
-      role: 'Fullstack Developer',
-      githubUser: 'carlosoening2',
-      avatar: '',
-      linkedinUser: 'carlosoening'
-    },
-    {
-      name: 'Teste 2',
-      role: 'Fullstack Developer',
-      githubUser: 'carlosoening2',
-      avatar: '',
-      linkedinUser: 'carlosoening'
-    },
-    {
-      name: 'Teste 3',
-      role: 'Fullstack Developer',
-      githubUser: 'carlosoening2',
-      avatar: '',
-      linkedinUser: 'carlosoening'
-    },
-    {
-      name: 'Teste 4',
-      role: 'Fullstack Developer',
-      githubUser: 'carlosoening2',
-      avatar: '',
-      linkedinUser: 'carlosoening'
+      linkedinUser: 'ricardopassos'
     },
   ]);
 
   SwiperCore.use([Navigation])
 
   function handleRemoveItem(event: any) {
-    setConfirmModalTitle('Confirmar Deleção');
+    setConfirmModalTitle('Confirmar Exclusão');
     setConfirmModalText('Você tem certeza que deseja deletar este item?');
     setDeleteItemId(event.id)
     setShowConfirmModal((prev: boolean) => !prev);
@@ -96,6 +68,7 @@ function Devs() {
   }
 
   function handleAddItem(event: any) {
+    console.log(event);
     setDevs([...devs, event]);
   }
 
@@ -155,6 +128,7 @@ function Devs() {
                   name={d.name} 
                   role={d.role}
                   githubUser={d.githubUser}
+                  linkedinUser={d.linkedinUser}
                   onRemoveItem={(event: any) => handleRemoveItem(event)}
                   onEditClick={() => handleEditClick(d)}
                 >
