@@ -9,9 +9,9 @@ function Header() {
   return (
     <StyledHeader>
       <div className="icons">
-        <a href=""><img src={linkedin} alt="Linkedin" /></a>
-        <a href=""><img src={facebook} alt="Facebook" /></a>
-        <a href=""><img src={discord} alt="Discord" /></a>
+        <a href="https://www.linkedin.com/in/rafaellaballerini/" target="_blank"><img src={linkedin} alt="Linkedin" /></a>
+        <a href="https://www.facebook.com/rafaella.balleriniribeirogomes" target="_blank"><img src={facebook} alt="Facebook" /></a>
+        <a href="https://discord.gg/ballerini" target="_blank"><img src={discord} alt="Discord" /></a>
       </div>
       <Link className="logo" to="/">
         <div className="logo-icon">

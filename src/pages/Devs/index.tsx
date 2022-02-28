@@ -41,14 +41,12 @@ function Devs() {
       name: 'Carlos Oening',
       role: 'Fullstack Developer',
       githubUser: 'carlosoening',
-      avatar: '',
       linkedinUser: 'carlosoening'
     },
     {
       name: 'Ricardo Passos',
       role: 'Fullstack Developer',
       githubUser: 'ricardopassos',
-      avatar: '',
       linkedinUser: 'ricardopassos'
     },
   ]);
@@ -72,7 +70,6 @@ function Devs() {
   }
 
   function handleAddItem(event: any) {
-    console.log(event);
     setDevs([...devs, event]);
   }
 

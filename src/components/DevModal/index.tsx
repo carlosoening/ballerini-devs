@@ -18,7 +18,6 @@ interface Props {
 export default function DevModal({ showModal, setShowModal, onAddItem, editItem, modalType }: Props) {
 
   const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
   const [role, setRole] = useState("");
   const [githubUser, setGithubUser] = useState("");
   const [linkedinUser, setLinkedinUser] = useState("");
@@ -28,13 +27,11 @@ export default function DevModal({ showModal, setShowModal, onAddItem, editItem,
   useEffect(() => {
     if (modalType === ModalTypeEnum.EDIT && showModal) {
       setName(editItem.name);
-      setAvatar(editItem.avatar);
       setRole(editItem.role);
       setGithubUser(editItem.githubUser);
       setLinkedinUser(editItem.linkedinUser || '');
     } else if (!showModal) {
       setName('');
-      setAvatar('');
       setRole('');
       setGithubUser('');
       setLinkedinUser('');
@@ -71,13 +68,12 @@ export default function DevModal({ showModal, setShowModal, onAddItem, editItem,
   }, [keyPress])
 
   function addItem() {
-    onAddItem({name, avatar, role, githubUser, linkedinUser});
+    onAddItem({name, role, githubUser, linkedinUser});
     setShowModal(false);
   }
 
   function saveEditItem() {
     editItem.name = name;
-    editItem.avatar = avatar;
     editItem.role = role;
     editItem.githubUser = githubUser;
     editItem.linkedinUser = linkedinUser;
@@ -101,9 +97,6 @@ export default function DevModal({ showModal, setShowModal, onAddItem, editItem,
                   <Input width="100%" height="38px" fontSize="18px" placeholder="Nome"
                     value={name}
                     onChange={(e) => setName(e.target.value)}/>
-                  <Input width="100%" height="38px" fontSize="18px" placeholder="Avatar"
-                    value={avatar}
-                    onChange={(e) => setAvatar(e.target.value)}/>
                   <Input width="100%" height="38px" fontSize="18px" placeholder="Cargo"
                     value={role}
                     onChange={(e) => setRole(e.target.value)}/>
