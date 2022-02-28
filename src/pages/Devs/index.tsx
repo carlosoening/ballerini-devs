@@ -125,14 +125,10 @@ function Devs() {
               <SwiperSlide key={`key_${d.name}`} >
                 <Card
                   id={i}
-                  name={d.name} 
-                  role={d.role}
-                  githubUser={d.githubUser}
-                  linkedinUser={d.linkedinUser}
+                  dev={d}
                   onRemoveItem={(event: any) => handleRemoveItem(event)}
                   onEditClick={() => handleEditClick(d)}
-                >
-                </Card>
+                />
               </SwiperSlide>
             );
           })}

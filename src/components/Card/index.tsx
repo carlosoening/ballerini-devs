@@ -4,26 +4,30 @@ import github from '../../assets/github-white.svg';
 import linkedin from '../../assets/linkedin-white.svg';
 import { Button } from "../Button";
 import colors from "../../styles/colors";
+import Dev from "../../interfaces/dev";
 
-function Card(props: any) {
+interface Props {
+  dev: Dev;
+  id: number;
+  onRemoveItem: Function;
+  onEditClick: Function;
+}
+
+function Card({dev, id, onRemoveItem, onEditClick}: Props) {
 
   function removeItem() {
-    props.onRemoveItem({ id: props.id });
+    onRemoveItem({ id });
   }
 
   function editItem() {
-    props.onEditClick();
-  }
-
-  function handleGithubIconClick() {
-    
+    onEditClick();
   }
 
   return (
     <CardContainer>
       <StyledCard>
         <ImageContainer>
-          <StyledImage src={`https://github.com/${props.githubUser}.png`} 
+          <StyledImage src={`https://github.com/${dev.githubUser}.png`} 
           onError={(event) => {
             event.currentTarget.onerror = null;
             event.currentTarget.src = defaultImage;
@@ -31,13 +35,13 @@ function Card(props: any) {
         </ImageContainer>
         <ImageLine></ImageLine>
         <DevInfoContainer>
-          <p className="dev-name">{props.name}</p>
-          <p className="dev-role">{props.role}</p>
+          <p className="dev-name">{dev.name}</p>
+          <p className="dev-role">{dev.role}</p>
         </DevInfoContainer>
         <LinksContainer>
-          <a href={`https://github.com/${props.githubUser}`} 
+          <a href={`https://github.com/${dev.githubUser}`} 
             target="_blank"><img src={github} alt="Github Icon" /></a>
-          <a href={`https://linkedin.com/in/${props.linkedinUser}`} 
+          <a href={`https://linkedin.com/in/${dev.linkedinUser}`} 
             target="_blank"><img src={linkedin} alt="Linkedin Icon" /></a>
         </LinksContainer>
       </StyledCard>
