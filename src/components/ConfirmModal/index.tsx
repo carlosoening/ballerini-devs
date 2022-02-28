@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef } from "react";
 import { animated, useSpring } from 'react-spring';
+import Dev from "../../interfaces/dev";
 import colors from "../../styles/colors";
 import { Button } from "../Button";
 import { Background, ModalContent, ModalWrapper, Text, Title } from "./styles";
@@ -8,10 +9,12 @@ interface Props {
   showModal: boolean;
   setShowModal: Function;
   title: string;
-  text: string
+  text: string;
+  onOk: any;
+  itemId: number;
 }
 
-export default function ConfirmModal({ showModal, setShowModal, title, text }: Props) {
+export default function ConfirmModal({ showModal, setShowModal, title, text, onOk, itemId }: Props) {
 
   const modalRef = useRef<any>();
   
@@ -34,6 +37,11 @@ export default function ConfirmModal({ showModal, setShowModal, title, text }: P
     return () => document.removeEventListener('keydown', keyPress);
   }, [keyPress])
 
+  function ok() {
+    onOk({ id: itemId });
+    setShowModal(false);
+  }
+
   return (
     <>
       {showModal ? (
@@ -51,7 +59,7 @@ export default function ConfirmModal({ showModal, setShowModal, title, text }: P
                     Cancelar
                   </Button>
                   <Button width="125px" height="40px" fontSize="20px" 
-                    onClick={() => setShowModal(false)}>
+                    onClick={ok}>
                     OK
                   </Button>
                 </div>

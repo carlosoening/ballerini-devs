@@ -19,18 +19,21 @@ function Devs() {
   const [ showDevModal, setShowDevModal ] = useState<boolean>(false);
 
   const [ showConfirmModal, setShowConfirmModal ] = useState<boolean>(false);
+  const [ confirmModalTitle, setConfirmModalTitle ] = useState<string>('');
+  const [ confirmModalText, setConfirmModalText ] = useState<string>('');
 
   const [ modalType, setModalType ] = useState<string>(ModalTypeEnum.ADD);
 
   const [ editItem, setEditItem ] = useState<any>();
+  const [ deleteItemId, setDeleteItemId ] = useState<any>();
 
-  const openModal = () => {
+  const openDevModal = () => {
     setShowDevModal(prev => !prev);
   }
 
   function openModalAdd() {
     setModalType(ModalTypeEnum.ADD);
-    openModal();
+    openDevModal();
   }
 
   const [ devs, setDevs ] = useState<Dev[]>([
@@ -80,7 +83,10 @@ function Devs() {
 
   SwiperCore.use([Navigation])
 
-  function handleRemoveItem(props: any) {
+  function handleRemoveItem(event: any) {
+    setConfirmModalTitle('Confirmar Deleção');
+    setConfirmModalText('Você tem certeza que deseja deletar este item?');
+    setDeleteItemId(event.id)
     setShowConfirmModal((prev: boolean) => !prev);
   }
 
@@ -96,7 +102,12 @@ function Devs() {
   function handleEditClick(item: Dev) {
     setEditItem(item);
     setModalType(ModalTypeEnum.EDIT);
-    openModal();
+    openDevModal();
+  }
+
+  function handleOk(event: any) {
+    const newDevs = devs.filter((d, i) => i != event.id);
+    setDevs(newDevs);
   }
 
   return (
@@ -109,10 +120,12 @@ function Devs() {
         modalType={modalType}
       />
       <ConfirmModal
-        title="Confirmar Deleção"
-        text="Você tem certeza que deseja deletar este item?"
+        title={confirmModalTitle}
+        text={confirmModalText}
         showModal={showConfirmModal}
+        itemId={deleteItemId}
         setShowModal={setShowConfirmModal}
+        onOk={handleOk}
       ></ConfirmModal>
       <OptionsContainer>
         <SearchInputContainer>
@@ -142,7 +155,7 @@ function Devs() {
                   name={d.name} 
                   role={d.role}
                   githubUser={d.githubUser}
-                  onRemoveItem={handleRemoveItem}
+                  onRemoveItem={(event: any) => handleRemoveItem(event)}
                   onEditClick={() => handleEditClick(d)}
                 >
                 </Card>
