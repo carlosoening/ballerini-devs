@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SwiperCore, { Navigation } from 'swiper';
 import 'swiper/css';
 import "swiper/css/navigation";
@@ -35,7 +35,7 @@ function Devs() {
     setModalType(ModalTypeEnum.ADD);
     openDevModal();
   }
-
+  
   const [ devs, setDevs ] = useState<Dev[]>([
     {
       name: 'Carlos Oening',
@@ -53,6 +53,10 @@ function Devs() {
     },
   ]);
 
+  const [ data, setData ] = useState(devs);
+
+  useEffect(() => setData(devs), [devs]);
+
   SwiperCore.use([Navigation])
 
   function handleRemoveItem(event: any) {
@@ -64,7 +68,7 @@ function Devs() {
 
   function handleSearchInputChange(event: any) {
     let value = event.target.value;
-    setDevs(devs.filter(d => d.name.toLowerCase().includes(value.toLowerCase())));
+    setData(devs.filter(d => d.name.toLowerCase().includes(value.toLowerCase())));
   }
 
   function handleAddItem(event: any) {
@@ -120,7 +124,7 @@ function Devs() {
             },
           }}
         >
-          {devs.map((d, i) => {
+          {data.map((d, i) => {
             return (
               <SwiperSlide key={`key_${d.name}`} >
                 <Card
