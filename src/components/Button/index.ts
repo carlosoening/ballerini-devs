@@ -22,4 +22,9 @@ export const Button = styled.button<Props>`
     opacity: 0.8;
     cursor: pointer;
   }
+
+  &:disabled {
+    cursor: initial;
+    opacity: 0.8;
+  }
 `; 

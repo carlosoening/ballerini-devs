@@ -23,6 +23,8 @@ export default function DevModal({ showModal, setShowModal, onAddItem, editItem,
   const [githubUser, setGithubUser] = useState("");
   const [linkedinUser, setLinkedinUser] = useState("");
 
+  const [disabled, setDisabled] = useState(true);
+
   useEffect(() => {
     if (modalType === ModalTypeEnum.EDIT && showModal) {
       setName(editItem.name);
@@ -38,6 +40,14 @@ export default function DevModal({ showModal, setShowModal, onAddItem, editItem,
       setLinkedinUser('');
     }
   }, [showModal]);
+
+  useEffect(() => {
+    if (name && role && githubUser && linkedinUser) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [name, role, githubUser, linkedinUser]);
 
   const modalRef = useRef<any>();
   
@@ -109,7 +119,9 @@ export default function DevModal({ showModal, setShowModal, onAddItem, editItem,
                       Cancelar
                     </Button>
                     <Button width="125px" height="40px" fontSize="20px" 
-                      onClick={modalType === ModalTypeEnum.ADD ? addItem : saveEditItem}>
+                      onClick={modalType === ModalTypeEnum.ADD ? addItem : saveEditItem}
+                      disabled={disabled}
+                    >
                       {modalType === ModalTypeEnum.ADD ? 'Adicionar' : 'Salvar'}
                     </Button>
                   </div>
