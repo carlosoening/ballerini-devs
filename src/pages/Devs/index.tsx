@@ -12,17 +12,20 @@ import "swiper/css/navigation";
 import DevModal from "../../components/DevModal";
 import { Input } from "../../components/Input";
 import { ModalTypeEnum } from "../../enums/modal-type.enum";
+import ConfirmModal from "../../components/ConfirmModal";
 
 function Devs() {
 
-  const [ showModal, setShowModal ] = useState<boolean>(false);
+  const [ showDevModal, setShowDevModal ] = useState<boolean>(false);
+
+  const [ showConfirmModal, setShowConfirmModal ] = useState<boolean>(false);
 
   const [ modalType, setModalType ] = useState<string>(ModalTypeEnum.ADD);
 
   const [ editItem, setEditItem ] = useState<any>();
 
   const openModal = () => {
-    setShowModal(prev => !prev);
+    setShowDevModal(prev => !prev);
   }
 
   function openModalAdd() {
@@ -78,8 +81,7 @@ function Devs() {
   SwiperCore.use([Navigation])
 
   function handleRemoveItem(props: any) {
-    const newDevs = devs.filter((d, i) => i != props.id);
-    setDevs(newDevs);
+    setShowConfirmModal((prev: boolean) => !prev);
   }
 
   function handleSearchInputChange(event: any) {
@@ -100,12 +102,18 @@ function Devs() {
   return (
     <StyledDevs>
       <DevModal 
-        showModal={showModal} 
-        setShowModal={setShowModal} 
+        showModal={showDevModal} 
+        setShowModal={setShowDevModal} 
         onAddItem={handleAddItem}
         editItem={editItem}
         modalType={modalType}
       />
+      <ConfirmModal
+        title="Confirmar Deleção"
+        text="Você tem certeza que deseja deletar este item?"
+        showModal={showConfirmModal}
+        setShowModal={setShowConfirmModal}
+      ></ConfirmModal>
       <OptionsContainer>
         <SearchInputContainer>
           <img src={searchIcon} alt="Search Icon" />

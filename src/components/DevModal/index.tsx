@@ -50,12 +50,6 @@ export default function DevModal({ showModal, setShowModal, onAddItem, editItem,
     transform: showModal ? `translateY(0%)` : `translateY(-100%)` 
   });
 
-  // const closeModal = (e: any) => {
-  //   if (modalRef.current === e.target) {
-  //     setShowModal(false);
-  //   }
-  // }
-
   const keyPress = useCallback((e: any) => {
     if (e.key === 'Escape' && showModal) {
       setShowModal(false);

@@ -29,6 +29,7 @@ export const ModalWrapper = styled.div<ModalProps>`
   align-self: center;
   z-index: 1000;
   border-radius: 10px;
+  padding: 10px;
 `;
 
 export const ModalContent = styled.div`
@@ -40,17 +41,10 @@ export const ModalContent = styled.div`
   z-index: 1000;
   color: #141414;
   margin: 10px 20px;
-`;
-
-export const FieldsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 30px;
-  gap: 50px;
 
   .buttons {
     display: flex;
+    gap: 40px;
     justify-content: space-between;
   }
 `;
@@ -60,4 +54,11 @@ export const Title = styled.h1`
   font-weight: 500;
   font-size: 32px;
   color: ${colors.white};
+`;
+
+export const Text = styled.p`
+  color: ${colors.white};
+  font-size: 20px;
+  margin: 15px 0;
+  text-align: center;
 `;
