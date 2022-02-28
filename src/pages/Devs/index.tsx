@@ -9,15 +9,25 @@ import SwiperCore, { Navigation } from 'swiper';
 
 import 'swiper/css';
 import "swiper/css/navigation";
-import Modal from "../../components/Modal";
+import DevModal from "../../components/DevModal";
 import { Input } from "../../components/Input";
+import { ModalTypeEnum } from "../../enums/modal-type.enum";
 
 function Devs() {
 
   const [ showModal, setShowModal ] = useState<boolean>(false);
 
+  const [ modalType, setModalType ] = useState<string>(ModalTypeEnum.ADD);
+
+  const [ editItem, setEditItem ] = useState<any>();
+
   const openModal = () => {
     setShowModal(prev => !prev);
+  }
+
+  function openModalAdd() {
+    setModalType(ModalTypeEnum.ADD);
+    openModal();
   }
 
   const [ devs, setDevs ] = useState<Dev[]>([
@@ -25,42 +35,42 @@ function Devs() {
       name: 'Carlos Oening',
       role: 'Fullstack Developer',
       githubUser: 'carlosoening',
-      avatar: null,
+      avatar: '',
       linkedinUser: 'carlosoening'
     },
     {
       name: 'Ricardo Passos',
       role: 'Fullstack Developer',
       githubUser: 'carlosoening2',
-      avatar: null,
+      avatar: '',
       linkedinUser: 'carlosoening'
     },
     {
       name: 'Teste',
       role: 'Fullstack Developer',
       githubUser: 'carlosoening2',
-      avatar: null,
+      avatar: '',
       linkedinUser: 'carlosoening'
     },
     {
       name: 'Teste 2',
       role: 'Fullstack Developer',
       githubUser: 'carlosoening2',
-      avatar: null,
+      avatar: '',
       linkedinUser: 'carlosoening'
     },
     {
       name: 'Teste 3',
       role: 'Fullstack Developer',
       githubUser: 'carlosoening2',
-      avatar: null,
+      avatar: '',
       linkedinUser: 'carlosoening'
     },
     {
       name: 'Teste 4',
       role: 'Fullstack Developer',
       githubUser: 'carlosoening2',
-      avatar: null,
+      avatar: '',
       linkedinUser: 'carlosoening'
     },
   ]);
@@ -74,24 +84,34 @@ function Devs() {
 
   function handleSearchInputChange(event: any) {
     let value = event.target.value;
-    console.log(value);
     setDevs(devs.filter(d => d.name.toLowerCase().includes(value.toLowerCase())));
   }
 
   function handleAddItem(event: any) {
-    console.log(event);
     setDevs([...devs, event]);
+  }
+
+  function handleEditClick(item: Dev) {
+    setEditItem(item);
+    setModalType(ModalTypeEnum.EDIT);
+    openModal();
   }
 
   return (
     <StyledDevs>
-      <Modal showModal={showModal} setShowModal={setShowModal} onAddItem={handleAddItem} />
+      <DevModal 
+        showModal={showModal} 
+        setShowModal={setShowModal} 
+        onAddItem={handleAddItem}
+        editItem={editItem}
+        modalType={modalType}
+      />
       <OptionsContainer>
         <SearchInputContainer>
           <img src={searchIcon} alt="Search Icon" />
           <Input placeholder="Buscar" onChange={handleSearchInputChange}></Input>
         </SearchInputContainer>
-        <Button width="200px" height="40px" fontSize="14px" onClick={openModal}>Adicionar Desenvolvedor</Button>
+        <Button width="200px" height="40px" fontSize="14px" onClick={openModalAdd}>Adicionar Desenvolvedor</Button>
       </OptionsContainer>
       <CardsDisplay>
         <Swiper
@@ -115,6 +135,7 @@ function Devs() {
                   role={d.role}
                   githubUser={d.githubUser}
                   onRemoveItem={handleRemoveItem}
+                  onEditClick={() => handleEditClick(d)}
                 >
                 </Card>
               </SwiperSlide>

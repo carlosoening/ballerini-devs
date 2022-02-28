@@ -11,6 +11,10 @@ function Card(props: any) {
     props.onRemoveItem({ id: props.id });
   }
 
+  function editItem() {
+    props.onEditClick();
+  }
+
   return (
     <CardContainer>
       <StyledCard>
@@ -33,6 +37,7 @@ function Card(props: any) {
           width="125px"
           height="40px"
           fontSize="20px"
+          onClick={editItem}
         >
             Editar
         </Button>
