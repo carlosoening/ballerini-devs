@@ -5,6 +5,8 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: fit-content;
+  justify-content: center;
+  margin: auto;
 `;
 
 export const StyledCard = styled.div`
@@ -74,4 +76,8 @@ export const ButtonsContainer = styled.div`
   flex-grow: 1;
   justify-content: space-between;
   margin-top: 50px;
+
+  @media screen and (max-height: 815px) {
+    margin-top: 15px;
+  }
 `;

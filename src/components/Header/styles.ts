@@ -52,4 +52,8 @@ export const StyledHeader = styled.header`
       margin-bottom: 16px;
     }
   }
+
+  @media screen and (max-height: 815px) {
+    padding: 25px 0;
+  }
 `;

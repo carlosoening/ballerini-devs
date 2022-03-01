@@ -6,6 +6,10 @@ export const StyledDevs = styled.main`
   justify-content: center;
   align-items: center;
   height: calc(100vh - 146px);
+
+  @media screen and (max-height: 815px) {
+    margin-top: 80px;
+  }
 `;
 
 export const CardsDisplay = styled.div`
@@ -27,14 +31,17 @@ export const CardsDisplay = styled.div`
       justify-content: center;
       padding: 8px;
     }
+    
     .swiper-wrapper {
       height: 500px;
     }
+
     .swiper-slide {
       width: 100%;
       max-width: 400px;
       height: 500px;
     }
+
     .swiper-button-prev, .swiper-button-next {
       width: 48px;
       height: 48px;
@@ -69,6 +76,10 @@ export const OptionsContainer = styled.div`
 
   @media screen and (max-width: 768px) {
     top: 170px;
+  }
+
+  @media screen and (max-height: 815px) {
+    top: 125px;
   }
 `;
 
