@@ -1,5 +1,5 @@
 import { ButtonsContainer, CardContainer, DevInfoContainer, ImageContainer, ImageLine, LinksContainer, StyledCard, StyledImage } from "./styles";
-import defaultImage from '../../assets/1602304.jpg';
+import defaultImage from '../../assets/defaultImage.jpg';
 import github from '../../assets/github-white.svg';
 import linkedin from '../../assets/linkedin-white.svg';
 import { Button } from "../Button";
