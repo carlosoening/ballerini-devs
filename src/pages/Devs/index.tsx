@@ -65,8 +65,15 @@ function Devs() {
   }
 
   function handleSearchInputChange(event: any) {
-    let value = event.target.value;
-    setData(devs.filter(d => d.name.toLowerCase().includes(value.toLowerCase())));
+    let value: string = event.target.value.trim();
+    setData(devs.filter(d => {
+      return (
+        d.name.toLowerCase().includes(value.toLowerCase())
+        || d.role.toLowerCase().includes(value.toLowerCase())
+        || d.githubUser.toLowerCase().includes(value.toLowerCase())
+        || d.linkedinUser?.toLowerCase().includes(value.toLowerCase())
+      )
+    }));
   }
 
   function handleAddItem(event: any) {
@@ -92,6 +99,7 @@ function Devs() {
         onAddItem={handleAddItem}
         editItem={editItem}
         modalType={modalType}
+        data={devs}
       />
       <ConfirmModal
         title={confirmModalTitle}
@@ -100,7 +108,7 @@ function Devs() {
         itemId={deleteItemId}
         setShowModal={setShowConfirmModal}
         onOk={handleOk}
-      ></ConfirmModal>
+      />
       <OptionsContainer>
         <SearchInputContainer>
           <img src={searchIcon} alt="Search Icon" />

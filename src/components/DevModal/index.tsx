@@ -4,6 +4,7 @@ import { ModalTypeEnum } from "../../enums/modal-type.enum";
 import Dev from "../../interfaces/dev";
 import colors from "../../styles/colors";
 import { Button } from "../Button";
+import ConfirmModal from "../ConfirmModal";
 import { Input } from "../Input";
 import { Background, FieldsContainer, ModalContent, ModalWrapper, Title } from "./styles";
 
@@ -13,9 +14,10 @@ interface Props {
   onAddItem: Function;
   modalType: string;
   editItem: Dev;
+  data: Dev[];
 }
 
-export default function DevModal({ showModal, setShowModal, onAddItem, editItem, modalType }: Props) {
+export default function DevModal({ showModal, setShowModal, onAddItem, editItem, modalType, data }: Props) {
 
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
@@ -68,6 +70,15 @@ export default function DevModal({ showModal, setShowModal, onAddItem, editItem,
   }, [keyPress])
 
   function addItem() {
+    const filteredData = data.filter(d => {
+      return ((d.name.toLowerCase() === name.toLowerCase() ) 
+      || (d.githubUser.toLowerCase() === githubUser.toLowerCase())
+      || (d.linkedinUser?.toLowerCase() === linkedinUser.toLowerCase()));
+    });
+    if (filteredData.length > 0) {
+      alert("Este dev já foi adicionado!");
+      return;
+    };
     onAddItem({name, role, githubUser, linkedinUser});
     setShowModal(false);
   }

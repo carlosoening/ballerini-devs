@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { animated, useSpring } from 'react-spring';
 import Dev from "../../interfaces/dev";
 import colors from "../../styles/colors";
@@ -10,8 +10,8 @@ interface Props {
   setShowModal: Function;
   title: string;
   text: string;
-  onOk: any;
-  itemId: number;
+  onOk?: any;
+  itemId?: number;
 }
 
 export default function ConfirmModal({ showModal, setShowModal, title, text, onOk, itemId }: Props) {
