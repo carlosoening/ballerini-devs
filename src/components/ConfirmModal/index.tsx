@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { animated, useSpring } from 'react-spring';
-import Dev from "../../interfaces/dev";
 import colors from "../../styles/colors";
 import { Button } from "../Button";
 import { Background, ModalContent, ModalWrapper, Text, Title } from "./styles";
